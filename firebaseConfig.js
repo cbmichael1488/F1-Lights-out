@@ -1,22 +1,17 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database"; // 1. Import the database function
+import { getDatabase } from "firebase/database"; 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD_oFwS-Aj52y1q73VlYHc4UYsPvrN1sFc",
-  authDomain: "f1timing-7c9e4.firebaseapp.com",
-  databaseURL: "https://f1timing-7c9e4-default-rtdb.firebaseio.com",
-  projectId: "f1timing-7c9e4",
-  storageBucket: "f1timing-7c9e4.firebasestorage.app",
-  messagingSenderId: "887187541701",
-  appId: "1:887187541701:web:eb535cbd8472957805eaac",
-  measurementId: "G-F34G8WT971"
+  apiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.EXPO_PUBLIC_FIREBASE_DATABASE_URL,
+  projectId: process.env.EXPO_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.EXPO_PUBLIC_FIREBASE_APP_ID
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-// 2. Initialize the database
 const database = getDatabase(app);
 
-// 3. Export it so App.js can use it!
 export { database };
